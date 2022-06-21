@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: content_service
+  flyway:
+    enabled: true
+    schemas: ateupeonding_content_flyway
+    user: postgres
+    password: postgres
+    url: jdbc:postgresql://${DB_HOST:localhost}:5432/ateupeonding
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://${DB_HOST:localhost}:5432/ateupeonding
+  rabbitmq:
+    host: ${RABBIT_HOST:localhost}
+    password: password
+    username: rabbitmq
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 4096MB
+      max-request-size: 4096MB
+  jpa:
+    show-sql: true
+
+minio:
+  url: http://${MINIO_HOST:localhost}:9000
+  access_key: minio-root-user
+  secret_key: minio-root-password
+
+ateupeonding:
+  api: api/v1
+  core-service:
+    url: ${CORE_SERVICE_URL:http://localhost:8080}
+    projects-api: /core-service/${ateupeonding.api}/projects
+
+server:
+  port: 8084

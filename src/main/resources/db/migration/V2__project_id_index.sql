@@ -1,0 +1,1 @@
+create index if not exists ateupeonding_content_post_project_id on ateupeonding_content.post (project_id);
